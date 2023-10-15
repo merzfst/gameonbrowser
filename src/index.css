@@ -1,0 +1,188 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+body {
+  background-color: #272121;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  font-size: 10px;
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #000;
+  background-color: #769769;
+}
+
+.grid {
+  display: grid;
+  position: relative;
+  /* border: 3px solid #f7ea3b; */
+  grid-template-columns: repeat(100, 50px);
+  height: 100vh;
+  overflow: hidden;
+  padding: 100px;
+}
+
+.no-select {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+#container {
+  overflow: hidden;
+}
+
+.tooltip {
+  position: fixed;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+  opacity: 0.9;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  display: none;
+  transition: all 0.3s ease;
+}
+
+.zoomInButton {
+  position: absolute;
+  bottom: 150px;
+  right: 75px;
+  height: 50px;
+  width: 50px;
+  justify-content: center;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.5);
+  opacity: 0.5;
+  transition: 0.5s ease-out;
+  font-size: 40px;
+}
+
+.zoomInButton:hover {
+  background-color: #333;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  transform: perspective(400px) rotateX(10deg);
+  opacity: 1;
+}
+
+.zoomOutButton {
+  position: absolute;
+  bottom: 50px;
+  right: 75px;
+  height: 50px;
+  width: 50px;
+  justify-content: center;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.5);
+  opacity: 0.5;
+  transition: 0.5s ease-out;
+  font-size: 40px;
+  transform: perspective(400px) rotateX(0deg);
+}
+
+.zoomOutButton:hover {
+  background-color: #333;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  transform: perspective(400px) rotateX(10deg);
+  opacity: 1;
+}
+
+.centerButton {
+  position: absolute;
+  bottom: 100px;
+  right: 75px;
+  height: 50px;
+  width: 50px;
+  justify-content: center;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.5);
+  opacity: 0.5;
+  transition: 0.5s ease-out;
+  font-size: 40px;
+  transform: perspective(400px) rotateX(0deg);
+}
+
+.centerButton:hover {
+  background-color: #333;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  transform: perspective(400px) rotateX(10deg);
+  opacity: 1;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: -250px;
+  background: #333;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  color: #fff;
+  text-align: center;
+}
+
+.shape {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  position: fixed;
+  transition: transform 0.23s;
+  pointer-events: none;
+}
+
+.shape .row {
+  display: flex;
+
+}
+
+.sideCell {
+  width: 20px;
+  height: 20px;
+}
+
+.filled {
+  border: 1px solid #fff;
+  background-color: #000;
+}
+
+.shapeButton {
+  position: absolute;
+  top: 150px;
+  right: 100px;
+  justify-content: center;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.5);
+  opacity: 0.5;
+  transition: 0.5s;
+  font-size: 28px;
+}
+
+button {cursor: pointer}
