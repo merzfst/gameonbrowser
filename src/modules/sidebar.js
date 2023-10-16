@@ -6,14 +6,14 @@ function createSidebar(grid) {
   sidebar.classList.add("sidebar");
   let { zoomInButton, zoomOutButton, centerButton } = createButtons(grid);
 
-  sidebar.innerHTML = "<h1>My Sidebar</h1><p>Some content...</p>";
+  sidebar.innerHTML = "<h1>Меню построек</h1><p>Ваш баланс: ...</p>";
 
   document.body.appendChild(sidebar);
 
   function openSidebar() {
-    zoomInButton.style.right = "275px";
-    zoomOutButton.style.right = "275px";
-    centerButton.style.right = "275px";
+    zoomInButton.style.right = "375px";
+    zoomOutButton.style.right = "375px";
+    centerButton.style.right = "375px";
     sidebar.style.right = "0px";
   }
 
@@ -21,7 +21,32 @@ function createSidebar(grid) {
     zoomInButton.style.right = "75px";
     zoomOutButton.style.right = "75px";
     centerButton.style.right = "75px";
-    sidebar.style.right = "-250px";
+    sidebar.style.right = "-350px";
+  }
+
+  function addShapeToSidebar(shape, shapeElement) {
+    let shapeContainer = document.createElement("div");
+    shapeContainer.classList.add("shapeContainer");
+
+    let clonedShape = shapeElement.cloneNode(true);
+    shapeContainer.appendChild(clonedShape);
+
+    let shapeButton = document.createElement("button");
+    shapeButton.classList.add("shapeButton");
+    shapeButton.innerHTML = "Построить: " + shape.name;
+    shapeContainer.appendChild(shapeButton);
+
+    shapeButton.addEventListener(
+      "click",
+      () => {
+        let clonedShapeForGrid = clonedShape.cloneNode(true);
+        clonedShapeForGrid.classList.add("pulse");
+        grid.buildShape(clonedShapeForGrid);
+      },
+      false
+    );
+
+    sidebar.appendChild(shapeContainer);
   }
 
   document.body.addEventListener("mousemove", function (event) {
@@ -40,29 +65,39 @@ function createSidebar(grid) {
   sidebar.addEventListener("mouseout", function () {
     closeSidebar();
   });
-  let shape = new Shape(grid);
-  let shapeArray = [
+
+  function createBuild(shape, array) {
+    let createdShape = shape.createShape(array);
+    addShapeToSidebar(shape, createdShape);
+  }
+
+  let build1Array = [
     [1, 1, 1],
     [0, 1, 0],
     [1, 1, 1],
   ];
-  let createdShape = shape.createShape(shapeArray);
-  shape.displayShapeInSidebar(createdShape);
+  let build1 = new Shape(grid, "Ратуша");
 
-  let shapeButton = document.createElement("button");
-  shapeButton.classList.add("shapeButton");
-  shapeButton.innerHTML = "Добавить строение";
-  sidebar.appendChild(shapeButton);
+  let build2Array = [
+    [1, 1, 1],
+    [1, 0, 1],
+    [1, 1, 1],
+  ];
+  let build2 = new Shape(grid, "Кринж");
 
-  shapeButton.addEventListener(
-    "click",
-    () => {
-      let shapeElement = document.querySelector(".shape");
-      let clonedShape = shapeElement.cloneNode(true);
-      grid.buildShape(clonedShape);
-    },
-    false
-  );
+  let build3Array = [
+    [1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1],
+  ];
+  let build3 = new Shape(grid, "Кринж");
+
+  createBuild(build3, build3Array);
+  createBuild(build2, build2Array);
+  createBuild(build1, build1Array);
 }
 
 export default createSidebar;

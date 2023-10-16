@@ -1,6 +1,7 @@
 class Shape {
-  constructor(grid) {
+  constructor(grid, name) {
     this.grid = grid;
+    this.name = name;
   }
 
   createShape(shapeArray) {
@@ -22,11 +23,6 @@ class Shape {
     });
 
     return shape;
-  }
-
-  displayShapeInSidebar(shape) {
-    let sidebar = document.querySelector(".sidebar");
-    sidebar.appendChild(shape);
   }
 }
 

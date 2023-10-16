@@ -1,4 +1,5 @@
 import Cell from "./cells";
+import getShapeDimensionsFromDOM from "../tools/dimensions";
 
 class Grid {
   constructor() {
@@ -161,22 +162,35 @@ class Grid {
 
     window.addEventListener("keydown", (e) => {
       let step = this.cellSize;
+      let gridWidth = this.sectorSize * this.cellSize;
+      let gridHeight = this.sectorSize * this.cellSize;
+      let { width, height } = getShapeDimensionsFromDOM(shape);
+      width = width * this.cellSize;
+      height = height * this.cellSize;
+
+      let shapeTop = parseInt(shape.style.top);
+      let shapeLeft = parseInt(shape.style.left);
+
       switch (e.key) {
         case "ArrowUp":
-          shape.style.top = `${parseInt(shape.style.top) - step}px`;
-          this.gridElement.appendChild(shape);
+          if (shapeTop - step >= step) {
+            shape.style.top = `${shapeTop - step}px`;
+          }
           break;
         case "ArrowDown":
-          shape.style.top = `${parseInt(shape.style.top) + step}px`;
-          this.gridElement.appendChild(shape);
+          if (shapeTop + height + step <= gridHeight + step * 2) {
+            shape.style.top = `${shapeTop + step}px`;
+          }
           break;
         case "ArrowLeft":
-          shape.style.left = `${parseInt(shape.style.left) - step}px`;
-          this.gridElement.appendChild(shape);
+          if (shapeLeft - step >= step) {
+            shape.style.left = `${shapeLeft - step}px`;
+          }
           break;
         case "ArrowRight":
-          shape.style.left = `${parseInt(shape.style.left) + step}px`;
-          this.gridElement.appendChild(shape);
+          if (shapeLeft + width + step <= gridWidth + step * 2) {
+            shape.style.left = `${shapeLeft + step}px`;
+          }
           break;
       }
     });
