@@ -10,17 +10,19 @@ class Button {
 }
 
 function createButtons(grid) {
-  let zoomInButton = new Button("zoomInButton", "+", function () {
+  let zoomInButton = new Button("zoomButtons", "+", function () {
     grid.zoomIn();
   });
 
-  let zoomOutButton = new Button("zoomOutButton", "-", function () {
+  let zoomOutButton = new Button("zoomButtons", "-", function () {
     grid.zoomOut();
   });
+  zoomOutButton.style.bottom = "100px";
 
-  let centerButton = new Button("centerButton", "/", function () {
+  let centerButton = new Button("zoomButtons", "/", function () {
     grid.centerScroll();
   });
+  centerButton.style.bottom = "50px";
 
   return { zoomInButton, zoomOutButton, centerButton };
 }

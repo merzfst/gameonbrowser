@@ -4,7 +4,6 @@ class Cell {
     this.element.classList.add("cell");
     this.element.dataset.x = x;
     this.element.dataset.y = y;
-    //parent.appendChild(this.element);
   }
 }
 

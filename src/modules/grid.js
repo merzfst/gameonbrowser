@@ -42,6 +42,7 @@ class Grid {
             const xCoordinate = cell.element.dataset.x;
             const yCoordinate = cell.element.dataset.y;
             this.tooltip.innerText = `Координаты: (${xCoordinate}, ${yCoordinate})`;
+            this.compScale();
             this.tooltip.style.left = `${e.clientX / this.scale + 20}px`;
             this.tooltip.style.top = `${e.clientY / this.scale - 30}px`;
             this.tooltip.style.fontSize = `${14 / this.scale}px`;

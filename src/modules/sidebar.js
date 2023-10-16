@@ -42,7 +42,7 @@ function createSidebar(grid) {
   });
   let shape = new Shape(grid);
   let shapeArray = [
-    [0, 1, 0],
+    [1, 1, 1],
     [0, 1, 0],
     [1, 1, 1],
   ];

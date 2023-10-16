@@ -4,8 +4,6 @@
   padding: 0;
 }
 
-
-
 body {
   background-color: #272121;
   font-family: Arial, sans-serif;
@@ -55,7 +53,7 @@ body {
   transition: all 0.3s ease;
 }
 
-.zoomInButton {
+.zoomButtons {
   position: absolute;
   bottom: 150px;
   right: 75px;
@@ -72,59 +70,7 @@ body {
   font-size: 40px;
 }
 
-.zoomInButton:hover {
-  background-color: #333;
-  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
-  border-radius: 6px;
-  transform: perspective(400px) rotateX(10deg);
-  opacity: 1;
-}
-
-.zoomOutButton {
-  position: absolute;
-  bottom: 50px;
-  right: 75px;
-  height: 50px;
-  width: 50px;
-  justify-content: center;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.5);
-  opacity: 0.5;
-  transition: 0.5s ease-out;
-  font-size: 40px;
-  transform: perspective(400px) rotateX(0deg);
-}
-
-.zoomOutButton:hover {
-  background-color: #333;
-  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
-  border-radius: 6px;
-  transform: perspective(400px) rotateX(10deg);
-  opacity: 1;
-}
-
-.centerButton {
-  position: absolute;
-  bottom: 100px;
-  right: 75px;
-  height: 50px;
-  width: 50px;
-  justify-content: center;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.5);
-  opacity: 0.5;
-  transition: 0.5s ease-out;
-  font-size: 40px;
-  transform: perspective(400px) rotateX(0deg);
-}
-
-.centerButton:hover {
+.zoomButtons:hover {
   background-color: #333;
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
   border-radius: 6px;
@@ -157,7 +103,6 @@ body {
 
 .shape .row {
   display: flex;
-
 }
 
 .sideCell {
@@ -172,11 +117,12 @@ body {
 
 .shapeButton {
   position: absolute;
-  top: 150px;
-  right: 100px;
+  top: 100px;
+  right: 10px;
+  left: 100px;
   justify-content: center;
-  background-color: #333;
-  color: #fff;
+  background-color: #ffffff;
+  color: #000000;
   text-align: center;
   border-radius: 6px;
   box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.5);
@@ -185,4 +131,14 @@ body {
   font-size: 28px;
 }
 
-button {cursor: pointer}
+.shapeButton:hover {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  transform: perspective(400px) rotateX(10deg);
+  opacity: 1;
+}
+
+button {
+  cursor: pointer;
+}
