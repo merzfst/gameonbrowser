@@ -1,4 +1,5 @@
 node_modules
-bundle.js
-index.httml
+dist
 jsconfig.json
+dist/bundle.js
+dist/index.html
