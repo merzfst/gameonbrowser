@@ -3,6 +3,7 @@ import createButtons from "../grid/buttons";
 import Shape from "./shape";
 import { buildShape } from "../grid/elementManagement";
 import createElement from "../../tools/createElement";
+import buildings from "../../buildings/buildings.json";
 
 function createSidebar(grid) {
   let sidebar = createElement("div", "sidebar");
@@ -67,15 +68,11 @@ function createSidebar(grid) {
   sidebar.addEventListener("mouseover", openSidebar);
   sidebar.addEventListener("mouseout", closeSidebar);
 
-  fetch("/buildings.json")
-    .then((response) => response.json())
-    .then((data) => {
-      data.forEach((building) => {
-        let shape = new Shape(grid, building.name);
-        let shapeElement = shape.createShape(building.shape);
-        addShapeToSidebar(shape, shapeElement);
-      });
-    });
+  buildings.forEach((building) => {
+    let shape = new Shape(grid, building.name);
+    let shapeElement = shape.createShape(building.shape);
+    addShapeToSidebar(shape, shapeElement);
+  });
 }
 
 export default createSidebar;

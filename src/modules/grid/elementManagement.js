@@ -1,6 +1,7 @@
 import { compScale } from "../../tools/compcale";
 import Cell from "./cells";
 import { centerScroll } from "./scaling";
+import earth from "../../images/earth1.png";
 import createElement from "../../tools/createElement";
 
 export function loadCells(sectorSize, startX, startY) {
@@ -13,9 +14,10 @@ export function loadCells(sectorSize, startX, startY) {
       const cell = new Cell(x, y);
       this.cells[key] = cell;
       this.gridElement.append(cell.element);
-      cell.element.style.backgroundColor = cellData[key].element.color;
       cell.element.name = cellData[key].element.name;
       cell.isOccupied = cellData[key].isOccupied;
+      cell.element.style.backgroundImage = `url(${cellData[key].element.url})`;
+      cell.element.style.backgroundSize = "cover";
 
       cell.element.addEventListener("mouseover", (e) => {
         this.tooltipTimeout = setTimeout(() => {
@@ -24,7 +26,7 @@ export function loadCells(sectorSize, startX, startY) {
           this.gridElement.append(this.tooltip);
           const xCoordinate = cell.element.dataset.x;
           const yCoordinate = cell.element.dataset.y;
-          this.tooltip.innerHTML = `${cellData[key].element.name} </br> Координаты: (${xCoordinate}, ${yCoordinate})`;
+          this.tooltip.innerHTML = `${cell.element.name} </br> Координаты: (${xCoordinate}, ${yCoordinate})`;
           compScale.bind(this)();
           const rect = cell.element.getBoundingClientRect();
           this.tooltip.style.left = `${window.scrollX + rect.left + 40}px`;
@@ -48,9 +50,10 @@ export function loadCells(sectorSize, startX, startY) {
         const cell = new Cell(startX + x, startY - y);
         this.cells[`${startX + x},${startY - y}`] = cell;
         fragment.append(cell.element);
-        cell.element.color = "#769769";
-        cell.element.style.backgroundColor = cell.element.color;
+        cell.element.url = earth;
         cell.element.name = "Земля";
+        cell.element.style.backgroundImage = `url(${earth})`;
+        cell.element.style.backgroundSize = "cover";
 
         cell.element.addEventListener("mouseover", (e) => {
           this.tooltipTimeout = setTimeout(() => {
@@ -77,8 +80,6 @@ export function loadCells(sectorSize, startX, startY) {
       }
     }
     this.gridElement.appendChild(fragment);
-    this.cells["0,0"].element.style.backgroundColor = "red";
-    this.cells["0,0"].element.color = "red";
 
     localStorage.setItem("cells", JSON.stringify(this.cells));
   }
