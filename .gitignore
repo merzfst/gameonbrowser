@@ -1,5 +1,4 @@
 node_modules
-dist
 jsconfig.json
 dist/bundle.js
 dist/index.html

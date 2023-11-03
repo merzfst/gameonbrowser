@@ -1,0 +1,119 @@
+.shape.warning {
+  animation: shake 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both,
+    flash 1s linear infinite;
+}
+@keyframes flash {
+  0% {
+    background-color: red;
+  }
+  50% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: red;
+  }
+}
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+.sidebar {
+  width: 350px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: -350px;
+  background: #333;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  color: #fff;
+  text-align: center;
+}
+
+.shape {
+  display: flex;
+  margin: 10px;
+  flex-direction: column;
+  margin: 10px;
+  position: flex;
+  transition: transform 0.23s;
+  pointer-events: none;
+}
+
+.shape .row {
+  display: flex;
+}
+
+.sideCell {
+  width: 20px;
+  height: 20px;
+}
+
+.filled {
+  border: 1px solid #fff;
+  background-color: #000;
+}
+
+.shapeButton {
+  position: flex;
+  height: 65px;
+  width: 150px;
+  justify-content: space-between;
+  margin: 10px;
+  background-color: #ffffff;
+  color: #000000;
+  text-align: center;
+  border-radius: 6px;
+  box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.5);
+  opacity: 0.5;
+  transition: 0.5s;
+  font-size: 28px;
+}
+
+.shapeButton:hover {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  transform: perspective(400px) rotateX(10deg);
+  opacity: 1;
+}
+
+.shapeContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}

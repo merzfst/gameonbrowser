@@ -1,8 +1,9 @@
+import createElement from "../../tools/createElement";
+import { zoomIn, zoomOut, centerScroll } from "./scaling";
+
 class Button {
   constructor(buttonClass, innerHTML, clickFunction) {
-    let button = document.createElement("button");
-    button.classList.add(buttonClass);
-    button.innerHTML = innerHTML;
+    let button = createElement("button", buttonClass, innerHTML);
     button.addEventListener("click", clickFunction);
     document.body.appendChild(button);
     return button;
@@ -11,16 +12,16 @@ class Button {
 
 function createButtons(grid) {
   let zoomInButton = new Button("zoomButtons", "+", function () {
-    grid.zoomIn();
+    zoomIn.bind(grid)();
   });
 
   let zoomOutButton = new Button("zoomButtons", "-", function () {
-    grid.zoomOut();
+    zoomOut.bind(grid)();
   });
   zoomOutButton.style.bottom = "100px";
 
   let centerButton = new Button("zoomButtons", "/", function () {
-    grid.centerScroll();
+    centerScroll.bind(grid)();
   });
   centerButton.style.bottom = "50px";
 

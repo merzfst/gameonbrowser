@@ -1,3 +1,5 @@
+import createElement from "../../tools/createElement";
+
 class Shape {
   constructor(grid, name) {
     this.grid = grid;
@@ -5,17 +7,15 @@ class Shape {
   }
 
   createShape(shapeArray) {
-    let shape = document.createElement("div");
-    shape.classList.add("shape");
+    let shape = createElement("div", "shape");
 
     shapeArray.forEach((row, rowIndex) => {
-      let rowDiv = document.createElement("div");
-      rowDiv.classList.add("row");
+      let rowDiv = createElement("div", "row");
       row.forEach((cell, cellIndex) => {
-        let cellDiv = document.createElement("div");
-        cellDiv.classList.add("sideCell");
-        if (cell === 1) {
+        let cellDiv = createElement("div", "sideCell");
+        if (cell.type === 1) {
           cellDiv.classList.add("filled");
+          cellDiv.style.backgroundColor = cell.color;
         }
         rowDiv.appendChild(cellDiv);
       });
