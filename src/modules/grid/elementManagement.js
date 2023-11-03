@@ -64,8 +64,9 @@ export function loadCells(sectorSize, startX, startY) {
             const yCoordinate = cell.element.dataset.y;
             this.tooltip.innerHTML = `${cell.element.name} </br> Координаты: (${xCoordinate}, ${yCoordinate})`;
             compScale.bind(this)();
-            this.tooltip.style.left = `${cell.element.offsetLeft + 40}px`;
-            this.tooltip.style.top = `${cell.element.offsetTop - 40}px`;
+            const rect = cell.element.getBoundingClientRect();
+            this.tooltip.style.left = `${window.scrollX + rect.left + 40}px`;
+            this.tooltip.style.top = `${window.scrollY + rect.top - 40}px`;
             this.tooltip.style.fontSize = `${14 / this.scale}px`;
             this.tooltip.style.padding = `${10 / this.scale}px`;
             this.tooltip.style.display = "block";
