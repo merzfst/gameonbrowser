@@ -69,7 +69,7 @@ function createSidebar(grid) {
   sidebar.addEventListener("mouseout", closeSidebar);
 
   buildings.forEach((building) => {
-    let shape = new Shape(grid, building.name);
+    let shape = new Shape(grid, building.name, building.shape);
     let shapeElement = shape.createShape(building.shape);
     addShapeToSidebar(shape, shapeElement);
   });

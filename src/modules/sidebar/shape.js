@@ -1,9 +1,10 @@
 import createElement from "../../tools/createElement";
 
 class Shape {
-  constructor(grid, name) {
+  constructor(grid, name, shape) {
     this.grid = grid;
     this.name = name;
+    this.shape = shape;
   }
 
   createShape(shapeArray) {
@@ -14,8 +15,9 @@ class Shape {
       row.forEach((cell, cellIndex) => {
         let cellDiv = createElement("div", "sideCell");
         if (cell.type === 1) {
-          cellDiv.classList.add("filled");
-          cellDiv.style.backgroundColor = cell.color;
+          // cellDiv.classList.add("filled");
+          // cellDiv.style.backgroundColor = cell.color;
+          cellDiv.classList.add("sprite", cell.imageClass);
         }
         rowDiv.appendChild(cellDiv);
       });

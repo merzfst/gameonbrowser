@@ -1,8 +1,8 @@
 import { compScale } from "../../tools/compcale";
 import Cell from "./cells";
 import { centerScroll } from "./scaling";
-import earth from "../../images/earth1.png";
 import createElement from "../../tools/createElement";
+import "./sprite.css";
 
 export function loadCells(sectorSize, startX, startY) {
   const savedCells = localStorage.getItem("cells");
@@ -16,8 +16,8 @@ export function loadCells(sectorSize, startX, startY) {
       this.gridElement.append(cell.element);
       cell.element.name = cellData[key].element.name;
       cell.isOccupied = cellData[key].isOccupied;
-      cell.element.style.backgroundImage = `url(${cellData[key].element.url})`;
-      cell.element.style.backgroundSize = "cover";
+      cell.element.imageClass = cellData[key].element.imageClass;
+      cell.element.classList.add("sprite", cell.element.imageClass);
 
       cell.element.addEventListener("mouseover", (e) => {
         this.tooltipTimeout = setTimeout(() => {
@@ -50,10 +50,9 @@ export function loadCells(sectorSize, startX, startY) {
         const cell = new Cell(startX + x, startY - y);
         this.cells[`${startX + x},${startY - y}`] = cell;
         fragment.append(cell.element);
-        cell.element.url = earth;
         cell.element.name = "Земля";
-        cell.element.style.backgroundImage = `url(${earth})`;
-        cell.element.style.backgroundSize = "cover";
+        cell.element.imageClass = "bg-earth1";
+        cell.element.classList.add("sprite", cell.element.imageClass);
 
         cell.element.addEventListener("mouseover", (e) => {
           this.tooltipTimeout = setTimeout(() => {
@@ -136,13 +135,17 @@ export function placeShape() {
         const cellKey = `${cellX},${cellY}`;
 
         if (this.cells[cellKey]) {
-          const color = cells[x].style.backgroundColor;
-
           this.cells[cellKey].element.name = this.shape.name;
-          this.cells[cellKey].element.color = color;
           this.cells[cellKey].isOccupied = true;
-
-          this.cells[cellKey].element.style.backgroundColor = color;
+          let lastClass = this.cells[cellKey].element.classList.item(
+            this.cells[cellKey].element.classList.length - 1
+          );
+          console.log(cells[x]);
+          this.cells[cellKey].element.classList.remove(lastClass);
+          lastClass = cells[x].classList.item(cells[x].classList.length - 1);
+          console.log(cells[x]);
+          this.cells[cellKey].element.classList.add(lastClass);
+          this.cells[cellKey].element.imageClass = lastClass;
         }
       }
     }

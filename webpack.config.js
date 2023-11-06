@@ -8,6 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, "./docs"),
     filename: "bundle.js",
     clean: true,
+    assetModuleFilename: "[name][ext]",
   },
   devServer: {
     static: {
@@ -31,14 +32,6 @@ module.exports = {
             presets: [["@babel/preset-env", { targets: "defaults" }]],
           },
         },
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: "file-loader",
-          },
-        ],
       },
     ],
   },

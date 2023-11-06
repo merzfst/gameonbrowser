@@ -1,27 +1,21 @@
 [
   {
-    "name": "Building1",
+    "name": "Ратуша",
     "shape": [
       [
-        { "type": 0, "color": "red" },
-        { "type": 1, "color": "blue" }
+        { "type": 1, "imageClass": "bg-townhall1" },
+        { "type": 1, "imageClass": "bg-townhall2" },
+        { "type": 1, "imageClass": "bg-townhall3" }
       ],
       [
-        { "type": 1, "color": "green" },
-        { "type": 0, "color": "yellow" }
-      ]
-    ]
-  },
-  {
-    "name": "Building2",
-    "shape": [
-      [
-        { "type": 1, "color": "purple" },
-        { "type": 0, "color": "orange" }
+        { "type": 1, "imageClass": "bg-townhall4" },
+        { "type": 1, "imageClass": "bg-townhall5" },
+        { "type": 1, "imageClass": "bg-townhall6" }
       ],
       [
-        { "type": 0, "color": "pink" },
-        { "type": 1, "color": "black" }
+        { "type": 1, "imageClass": "bg-townhall7" },
+        { "type": 1, "imageClass": "bg-townhall8" },
+        { "type": 1, "imageClass": "bg-townhall9" }
       ]
     ]
   }

@@ -1,0 +1,59 @@
+.bg-townhall1 {
+  width: 50px;
+  height: 50px;
+  background: url("../../images/css_sprites.png") -10px -10px;
+}
+
+.bg-townhall2 {
+  width: 50px;
+  height: 50px;
+  background: url("../../images/css_sprites.png") -80px -10px;
+}
+
+.bg-townhall3 {
+  width: 50px;
+  height: 50px;
+  background: url("../../images/css_sprites.png") -150px -10px;
+}
+
+.bg-townhall4 {
+  width: 50px;
+  height: 50px;
+  background: url("../../images/css_sprites.png") -220px -10px;
+}
+
+.bg-townhall5 {
+  width: 50px;
+  height: 50px;
+  background: url("../../images/css_sprites.png") -290px -10px;
+}
+
+.bg-townhall6 {
+  width: 50px;
+  height: 50px;
+  background: url("../../images/css_sprites.png") -360px -10px;
+}
+
+.bg-townhall7 {
+  width: 50px;
+  height: 50px;
+  background: url("../../images/css_sprites.png") -430px -10px;
+}
+
+.bg-townhall8 {
+  width: 50px;
+  height: 50px;
+  background: url("../../images/css_sprites.png") -500px -10px;
+}
+
+.bg-townhall9 {
+  width: 50px;
+  height: 50px;
+  background: url("../../images/css_sprites.png") -570px -10px;
+}
+
+.bg-earth1 {
+  width: 50px;
+  height: 50px;
+  background: url("../../images/css_sprites.png") -640px -10px;
+}
