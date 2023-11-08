@@ -1,6 +1,7 @@
 [
   {
     "name": "Ратуша",
+    "type": "Управление",
     "shape": [
       [
         { "type": 1, "imageClass": "bg-townhall1" },

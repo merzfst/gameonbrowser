@@ -4,6 +4,7 @@ import Shape from "./shape";
 import { buildShape } from "../grid/elementManagement";
 import createElement from "../../tools/createElement";
 import buildings from "../../buildings/buildings.json";
+import allBuildingsType from "../../buildings/allBuildingsType.json";
 
 function createSidebar(grid) {
   let sidebar = createElement("div", "sidebar");
@@ -29,32 +30,60 @@ function createSidebar(grid) {
     sidebar.style.right = "-350px";
   }
 
-  function addShapeToSidebar(shape, shapeElement) {
-    let shapeContainer = createElement("div", "shapeContainer");
-    shapeContainer.appendChild(shapeElement);
-
-    let shapeButton = createElement(
-      "button",
-      "shapeButton",
-      "Построить: " + shape.name
-    );
-    shapeButton.setAttribute("tabindex", "-1");
-    shapeContainer.appendChild(shapeButton);
-
-    shapeButton.addEventListener(
-      "click",
-      () => {
-        let clonedShapeForGrid = shapeElement.cloneNode(true);
-        clonedShapeForGrid.classList.add("pulse");
-        clonedShapeForGrid.name = shape.name;
-        buildShape.bind(grid)(clonedShapeForGrid);
-        shapeButton.blur();
-      },
-      false
-    );
-
-    sidebar.appendChild(shapeContainer);
+  function createBuildingTypeButtons(buildingTypes) {
+    let buttons = {};
+    buildingTypes[0].types.forEach((type) => {
+      let button = createElement("button", "buildingTypeButton", type);
+      button.addEventListener("click", () => openBuildingTypeWindow(type));
+      buttons[type] = button;
+      sidebar.appendChild(button);
+    });
+    return buttons;
   }
+
+  function openBuildingTypeWindow(type) {
+    let existingWindow = document.querySelector(".buildingTypeWindow");
+    if (existingWindow) {
+      document.body.removeChild(existingWindow);
+    }
+    let window = createElement("div", "buildingTypeWindow");
+    let buildingsOfType = buildings.filter(
+      (building) => building.type === type
+    );
+    buildingsOfType.forEach((building) => {
+      let shape = new Shape(grid, building.name, building.shape);
+      let shapeElement = shape.createShape(building.shape);
+      let shapeButton = createElement(
+        "button",
+        "shapeButton",
+        "Построить: " + shape.name
+      );
+      shapeButton.addEventListener(
+        "click",
+        () => {
+          let clonedShapeForGrid = shapeElement.cloneNode(true);
+          clonedShapeForGrid.classList.add("pulse");
+          clonedShapeForGrid.name = shape.name;
+          buildShape.bind(grid)(clonedShapeForGrid);
+          shapeButton.blur();
+          document.body.removeChild(window);
+        },
+        false
+      );
+      window.appendChild(shapeElement);
+      window.appendChild(shapeButton);
+    });
+    let closeButton = createElement("button", "closeButton", "X");
+    closeButton.addEventListener("click", () =>
+      document.body.removeChild(window)
+    );
+    window.appendChild(closeButton);
+    document.body.appendChild(window);
+    setTimeout(() => (window.style.opacity = "1"), 0);
+  }
+
+  let buildingTypes = [...new Set(buildings.map((building) => building.type))];
+  let buildingTypeButtons = createBuildingTypeButtons(allBuildingsType);
 
   document.body.addEventListener("mousemove", function (event) {
     if (window.innerWidth - event.clientX < 25) {
@@ -67,12 +96,6 @@ function createSidebar(grid) {
   });
   sidebar.addEventListener("mouseover", openSidebar);
   sidebar.addEventListener("mouseout", closeSidebar);
-
-  buildings.forEach((building) => {
-    let shape = new Shape(grid, building.name, building.shape);
-    let shapeElement = shape.createShape(building.shape);
-    addShapeToSidebar(shape, shapeElement);
-  });
 }
 
 export default createSidebar;
