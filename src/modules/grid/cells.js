@@ -6,8 +6,6 @@ class Cell {
     this.element.dataset.x = x;
     this.element.dataset.y = y;
     this.isOccupied = false;
-    this.color;
-    this.element.dataset.url;
   }
 }
 

@@ -2,22 +2,31 @@
   {
     "name": "Ратуша",
     "type": "Управление",
+    "value": "100000",
+    "limit": "1",
     "shape": [
       [
-        { "type": 1, "imageClass": "bg-townhall1" },
-        { "type": 1, "imageClass": "bg-townhall2" },
-        { "type": 1, "imageClass": "bg-townhall3" }
+        { "imageClass": "bg-townhall1", "id": "1" },
+        { "imageClass": "bg-townhall2" },
+        { "imageClass": "bg-townhall3" }
       ],
       [
-        { "type": 1, "imageClass": "bg-townhall4" },
-        { "type": 1, "imageClass": "bg-townhall5" },
-        { "type": 1, "imageClass": "bg-townhall6" }
+        { "imageClass": "bg-townhall4" },
+        { "imageClass": "bg-townhall5" },
+        { "imageClass": "bg-townhall6" }
       ],
       [
-        { "type": 1, "imageClass": "bg-townhall7" },
-        { "type": 1, "imageClass": "bg-townhall8" },
-        { "type": 1, "imageClass": "bg-townhall9" }
+        { "imageClass": "bg-townhall7" },
+        { "imageClass": "bg-townhall8" },
+        { "imageClass": "bg-townhall9" }
       ]
     ]
+  },
+  {
+    "name": "Дорога",
+    "type": "Транспорт и инфраструктура",
+    "shape": [[{ "id": "1", "imageClass": "road" }]],
+    "value": 10,
+    "limit": 10000
   }
 ]

@@ -20,8 +20,5 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   },
-  "description": "",
-  "dependencies": {
-    "three": "^0.158.0"
-  }
+  "description": ""
 }

@@ -7,4 +7,4 @@ const grid = new Grid();
 document.body.append(grid.gridElement);
 centerScroll.bind(grid)();
 
-createSidebar(grid);
+createSidebar.bind(grid)(grid);
